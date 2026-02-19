@@ -60,6 +60,12 @@ model Account {
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
 
+  subscriptionTier      SubscriptionTier   @default(FREE)
+  subscriptionStatus    SubscriptionStatus @default(INACTIVE)
+  subscriptionStartDate DateTime?
+  subscriptionEndDate   DateTime?
+  audioListenTime       Int                @default(0)
+
   @@index([userId])
   @@map("Account")
 }
@@ -74,4 +80,18 @@ model Verification {
 
   @@index([identifier])
   @@map("Verification")
+}
+
+enum SubscriptionTier {
+  FREE
+  MONTHLY
+  YEARLY
+  LIFETIME
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  INACTIVE
+  EXPIRED
+  CANCELLED
 }
