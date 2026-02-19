@@ -8,7 +8,6 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "seed": "tsx ./prisma/seed.ts",
     "format": "prettier --write app/",
     "lint": "eslint --fix app/"
   },
