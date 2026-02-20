@@ -216,6 +216,16 @@ model AdminActivityLog {
   @@index([adminId])
 }
 
+model SystemSetting {
+  id           String      @id @default(cuid())
+  settingKey   String
+  settingValue String
+  settingType  SettingType
+  description  String?     @db.Text
+
+  updatedAt DateTime @updatedAt
+}
+
 // Maybe needs to be removed later
 model SubscriptionPlan {
   id           String      @id @default(cuid())
@@ -248,4 +258,11 @@ enum RenewalType {
   MONTHLY
   YEARLY
   LIFETIME
+}
+
+enum SettingType {
+  STRING
+  NUMBER
+  BOOLEAN
+  JSON
 }
