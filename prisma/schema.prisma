@@ -23,9 +23,10 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  sessions  Session[]
-  accounts  Account[]
-  favorites Favorite[]
+  sessions             Session[]
+  accounts             Account[]
+  favorites            Favorite[]
+  userReadingHistories UserReadingHistory[]
 
   @@map("User")
 }
@@ -122,9 +123,10 @@ model Book {
   summaryGenerated   Boolean @default(false)
   audioGenerated     Boolean @default(false)
 
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  favorites Favorite[]
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
+  favorites            Favorite[]
+  userReadingHistories UserReadingHistory[]
 
   @@index([slug])
 }
@@ -167,6 +169,26 @@ model BookReview {
 }
 
 model Favorite {
+  createdAt DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+  book   Book   @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  bookId String
+
+  @@id([userId, bookId])
+  @@index([userId])
+  @@index([bookId])
+}
+
+model UserReadingHistory {
+  lastAccessed         DateTime @default(now())
+  completionPercentage Int      @default(0)
+  audioPosition        Int      @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
   book   Book   @relation(fields: [bookId], references: [id], onDelete: Cascade)
