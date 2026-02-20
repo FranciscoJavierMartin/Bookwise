@@ -82,6 +82,18 @@ model Verification {
   @@map("Verification")
 }
 
+model Category {
+  id           String   @id @default(cuid())
+  name         String   @unique
+  slug         String   @unique
+  description  String?  @db.Text
+  icon         String?  // icon name or URL
+  displayOrder Int      @default(0)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
 enum SubscriptionTier {
   FREE
   MONTHLY
