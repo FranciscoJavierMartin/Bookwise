@@ -67,6 +67,14 @@
           </p>
         </div>
       </div>
+      <p class="mt-8 text-center text-xs text-gray-500">
+        By creating an account, you agree to our&nbsp;<NuxtLink
+          class="underline hover:text-gray-700"
+          >Terms fo service</NuxtLink
+        >&nbsp;and&nbsp;<NuxtLink class="underline hover:text-gray-700"
+          >Privacy policy</NuxtLink
+        >.
+      </p>
     </div>
   </div>
 </template>
