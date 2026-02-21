@@ -31,22 +31,44 @@
         <div class="mb-6 rounded-lg border border-red-200 bg-red-50 p-4">
           <p class="text-sm text-red-700">error</p>
         </div>
-        <form class="flex flex-col gap-y-6">
-          <div>
-            <label
-              for="fullName"
-              class="mb-2 text-sm font-semibold text-gray-700"
-            >
-              Full Name
-            </label>
-            <input
-              id="fullName"
-              required
-              value="test"
-              placeholder="John Doe"
-              class="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all outline-none focus:border-transparent focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
+        <form class="flex flex-col gap-y-6" @submit.prevent="form.handleSubmit">
+          <!-- <form.Field name="fullName">
+            <template v-slot="{ field }">
+              <input
+                :name="field.name"
+                :value="field.state.value"
+                @blur="field.handleBlur"
+                @input="field.handleChange($event.target.value)"
+              />
+            </template>
+          </form.Field> -->
+          <FormInput
+            name="fullName"
+            label="Full name"
+            placeholder="John Doe"
+            :form-field="form.Field"
+          />
+          <FormInput
+            name="email"
+            label="Email"
+            placeholder="john@example.com"
+            type="email"
+            :form-field="form.Field"
+          />
+          <FormInput
+            name="password"
+            label="Password"
+            placeholder="Password"
+            type="password"
+            :form-field="form.Field"
+          />
+          <FormInput
+            name="confirmPassword"
+            label="Confirm password"
+            placeholder="Confirm password"
+            type="password"
+            :form-field="form.Field"
+          />
           <button
             type="submit"
             class="brand-gradient w-full transform rounded-lg px-4 py-3 font-semibold text-white transition-all hover:scale-[1.02] hover:from-indigo-700 hover:to-purple-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
@@ -80,5 +102,54 @@
 </template>
 
 <script setup lang="ts">
+import * as v from 'valibot';
+import { useForm } from '@tanstack/vue-form';
 import { ROUTES } from '@/utils/constants/routes';
+
+const signUpFormSchema = v.pipe(
+  v.object({
+    fullName: v.pipe(
+      v.string(),
+      v.nonEmpty('Name is required.'),
+      v.minLength(2, 'Name must be at least 2 characters long'),
+      v.maxLength(50, 'Name cannot exceed 50 characters.'),
+    ),
+    email: v.pipe(
+      v.string(),
+      v.nonEmpty('Email is required'),
+      v.email('Please provide a valid email address'),
+    ),
+    password: v.pipe(
+      v.string(),
+      v.minLength(6, 'Password must be at least 6 characters long'),
+    ),
+    confirmPassword: v.string(),
+  }),
+  v.forward(
+    v.partialCheck(
+      [['password'], ['confirmPassword']],
+      (input) => input.password === input.confirmPassword,
+      'Must confirm with password',
+    ),
+    ['confirmPassword'],
+  ),
+);
+
+const form = useForm({
+  defaultValues: {
+    fullName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  },
+  validators: {
+    onSubmit: signUpFormSchema,
+  },
+  onSubmit: async ({ value }) => {
+    console.log(value);
+  },
+  onSubmitInvalid: ({ value }) => {
+    console.log('hello', value);
+  },
+});
 </script>
