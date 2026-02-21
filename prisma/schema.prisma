@@ -74,7 +74,7 @@ model Account {
   // subscriptionStatus    SubscriptionStatus @default(INACTIVE)
   // subscriptionStartDate DateTime?
   // subscriptionEndDate   DateTime?
-  audioListenTime       Int                @default(0)
+  audioListenTime Int @default(0)
 
   @@index([userId])
   @@map("Account")
@@ -151,7 +151,7 @@ model BookSummary {
   id              String  @id @default(cuid())
   mainSummary     String? @db.Text
   keyTakeaways    Json?
-  fullSummary     Bytes?
+  fullSummary     String? @db.Text
   tableOfContents Json?
 
   createdAt DateTime @default(now())
@@ -165,7 +165,7 @@ model BookChapter {
   id             String  @id @default(cuid())
   chapterNumber  Int
   chapterTitle   String
-  chapterSummary Bytes
+  chapterSummary String? @db.Text
   audioUrl       String?
   audioDuration  Int     @default(0)
   displayOrder   Int     @default(0)
