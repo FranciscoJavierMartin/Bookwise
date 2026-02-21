@@ -9,12 +9,12 @@
           class="inline-flex items-center space-x-2"
         >
           <div
-            class="flex size-12 items-center justify-center rounded-xl bg-linear-to-r from-indigo-600 to-purple-600 shadow-lg"
+            class="brand-gradient flex size-12 items-center justify-center rounded-xl shadow-lg"
           >
             <span class="text-2xl font-bold text-white">B</span>
           </div>
           <span
-            class="bg-linear-to-r from-indigo-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent"
+            class="brand-gradient bg-clip-text text-3xl font-bold text-transparent"
           >
             BookWise
           </span>
@@ -31,7 +31,7 @@
         <div class="mb-6 rounded-lg border border-red-200 bg-red-50 p-4">
           <p class="text-sm text-red-700">error</p>
         </div>
-        <form>
+        <form class="flex flex-col gap-y-6">
           <div>
             <label
               for="fullName"
@@ -49,7 +49,7 @@
           </div>
           <button
             type="submit"
-            class="w-full transform rounded-lg bg-linear-to-r from-indigo-600 to-purple-600 px-4 py-3 font-semibold text-white transition-all hover:scale-[1.02] hover:from-indigo-700 hover:to-purple-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+            class="brand-gradient w-full transform rounded-lg px-4 py-3 font-semibold text-white transition-all hover:scale-[1.02] hover:from-indigo-700 hover:to-purple-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
           >
             Create account
           </button>

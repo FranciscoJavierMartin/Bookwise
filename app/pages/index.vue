@@ -8,12 +8,12 @@
             class="flex items-center space-x-2"
           >
             <div
-              class="flex size-10 items-center justify-center rounded-xl bg-linear-to-r from-indigo-600 to-purple-600 shadow-lg"
+              class="brand-gradient flex size-10 items-center justify-center rounded-xl shadow-lg"
             >
               <span class="text-2xl font-bold text-white">B</span>
             </div>
             <span
-              class="bg-linear-to-r from-indigo-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent"
+              class="brand-gradient bg-clip-text text-2xl font-bold text-transparent"
             >
               BookWise
             </span>
@@ -27,7 +27,7 @@
             </NuxtLink>
             <NuxtLink
               :to="{ name: ROUTES.signUp }"
-              class="transform rounded-lg bg-linear-to-r from-indigo-600 to-purple-600 px-6 py-2.5 font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
+              class="brand-gradient transform rounded-lg px-6 py-2.5 font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
             >
               Get Started Free
             </NuxtLink>
@@ -62,7 +62,7 @@
         <div class="mb-16 flex justify-center gap-4">
           <NuxtLink
             :to="{ name: ROUTES.signUp }"
-            class="transform rounded-xl bg-linear-to-r from-indigo-600 to-purple-600 px-10 py-5 text-lg font-bold text-white shadow-2xl transition-all hover:scale-105 hover:shadow-indigo-500/50"
+            class="brand-gradient transform rounded-xl px-10 py-5 text-lg font-bold text-white shadow-2xl transition-all hover:scale-105 hover:shadow-indigo-500/50"
           >
             Start Free Today
           </NuxtLink>
@@ -146,7 +146,7 @@
       <div class="container mx-auto px-4 text-center">
         <div class="mb-6 flex items-center justify-center space-x-3">
           <div
-            class="flex size-10 items-center justify-center rounded-xl bg-linear-to-r from-indigo-600 to-purple-600"
+            class="brand-gradient flex size-10 items-center justify-center rounded-xl"
           >
             <span class="text-xl font-bold text-white">B</span>
           </div>
