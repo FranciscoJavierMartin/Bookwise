@@ -20,11 +20,13 @@
           </NuxtLink>
           <div class="flex items-center space-x-6">
             <NuxtLink
+              :to="{ name: ROUTES.signIn }"
               class="font-medium text-gray-700 transition-colors hover:text-indigo-600"
             >
               Sign In
             </NuxtLink>
             <NuxtLink
+              :to="{ name: ROUTES.signUp }"
               class="transform rounded-lg bg-linear-to-r from-indigo-600 to-purple-600 px-6 py-2.5 font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
             >
               Get Started Free
@@ -59,13 +61,17 @@
         </p>
         <div class="mb-16 flex justify-center gap-4">
           <NuxtLink
+            :to="{ name: ROUTES.signUp }"
             class="transform rounded-xl bg-linear-to-r from-indigo-600 to-purple-600 px-10 py-5 text-lg font-bold text-white shadow-2xl transition-all hover:scale-105 hover:shadow-indigo-500/50"
-            >Start Free Today</NuxtLink
           >
+            Start Free Today
+          </NuxtLink>
           <NuxtLink
+            :to="{ name: ROUTES.books }"
             class="rounded-xl border-2 border-gray-300 bg-white px-10 py-5 text-lg font-bold text-gray-900 transition-all hover:border-indigo-400 hover:bg-gray-50"
-            >Browse Library</NuxtLink
           >
+            Browse Library
+          </NuxtLink>
         </div>
         <div
           class="mx-auto grid max-w-3xl grid-cols-3 gap-12 border-t-2 border-gray-200 pt-12"
@@ -129,6 +135,7 @@
           Join thousands growing their knowledge daily
         </p>
         <NuxtLink
+          :to="{ name: ROUTES.signUp }"
           class="inline-block transform rounded-xl bg-white px-12 py-6 text-xl font-bold text-indigo-600 shadow-2xl transition-all hover:scale-105 hover:shadow-white/30"
         >
           Get Started Free
