@@ -21,9 +21,14 @@
           <div class="flex items-center space-x-6">
             <NuxtLink
               class="font-medium text-gray-700 transition-colors hover:text-indigo-600"
-              >Sign In</NuxtLink
             >
-            <NuxtLink>Get Started Free</NuxtLink>
+              Sign In
+            </NuxtLink>
+            <NuxtLink
+              class="transform rounded-lg bg-linear-to-r from-indigo-600 to-purple-600 px-6 py-2.5 font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
+            >
+              Get Started Free
+            </NuxtLink>
           </div>
         </div>
       </div>
