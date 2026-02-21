@@ -32,16 +32,6 @@
           <p class="text-sm text-red-700">error</p>
         </div>
         <form class="flex flex-col gap-y-6" @submit.prevent="form.handleSubmit">
-          <!-- <form.Field name="fullName">
-            <template v-slot="{ field }">
-              <input
-                :name="field.name"
-                :value="field.state.value"
-                @blur="field.handleBlur"
-                @input="field.handleChange($event.target.value)"
-              />
-            </template>
-          </form.Field> -->
           <FormInput
             name="fullName"
             label="Full name"
