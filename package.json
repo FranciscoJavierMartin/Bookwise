@@ -9,7 +9,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "format": "prettier --write app/ server/",
-    "lint": "eslint --fix app/ server/"
+    "lint": "eslint --fix app/ server/",
+    "prepare": "husky"
   },
   "dependencies": {
     "@nuxt/a11y": "1.0.0-alpha.1",
@@ -32,6 +33,7 @@
     "@types/pg": "^8.16.0",
     "@vue/eslint-config-prettier": "^10.2.0",
     "dotenv": "^17.3.1",
+    "husky": "^9.1.7",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "prisma": "^7.4.1",
