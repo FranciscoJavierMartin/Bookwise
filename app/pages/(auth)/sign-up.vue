@@ -61,9 +61,11 @@
           />
           <button
             type="submit"
-            class="brand-gradient w-full transform rounded-lg px-4 py-3 font-semibold text-white transition-all hover:scale-[1.02] hover:from-indigo-700 hover:to-purple-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+            class="brand-gradient mt-2 w-full transform rounded-lg px-4 py-3 font-semibold text-white transition-all hover:scale-[1.02] hover:from-indigo-700 hover:to-purple-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
           >
-            Create account
+            {{
+              form.state.isSubmitting ? 'Creating account' : 'Create account'
+            }}
           </button>
         </form>
 
@@ -137,12 +139,14 @@ const form = useForm({
     onSubmit: signUpFormSchema,
   },
   onSubmit: async ({ value }) => {
-    await authClient.admin.createUser({
-      email: value.email,
-      name: value.fullName,
-      password: value.password,
-      role: 'user',
-    });
+    try {
+      const response = await authClient.signUp.email({
+        email: value.email,
+        name: value.fullName,
+        password: value.password,
+        callbackURL: '/',
+      });
+    } catch {}
   },
 });
 </script>
