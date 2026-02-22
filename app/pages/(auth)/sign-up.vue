@@ -28,9 +28,6 @@
       </div>
 
       <div class="rounded-2xl bg-white p-8 shadow-xl">
-        <div class="mb-6 rounded-lg border border-red-200 bg-red-50 p-4">
-          <p class="text-sm text-red-700">error</p>
-        </div>
         <form class="flex flex-col gap-y-4" @submit.prevent="form.handleSubmit">
           <FormInput
             name="fullName"
@@ -99,6 +96,8 @@ import { useForm } from '@tanstack/vue-form';
 import { authClient } from '~~/lib/auth-client';
 import { ROUTES } from '@/utils/constants/routes';
 
+const { showErrorToast } = useToast();
+
 const signUpFormSchema = v.pipe(
   v.object({
     fullName: v.pipe(
@@ -146,7 +145,13 @@ const form = useForm({
         password: value.password,
         callbackURL: '/',
       });
-    } catch {}
+
+      if (response.error) {
+        throw new Error();
+      }
+    } catch {
+      showErrorToast('Error on creating account');
+    }
   },
 });
 </script>
