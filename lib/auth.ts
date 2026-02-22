@@ -1,6 +1,6 @@
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
-import { admin } from 'better-auth/plugins';
+import { admin, openAPI } from 'better-auth/plugins';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient } from '@/generated/prisma/client';
 
@@ -13,8 +13,12 @@ export const auth = betterAuth({
   }),
   emailAndPassword: {
     enabled: true,
+    autoSignIn: true,
   },
-  plugins: [admin()],
+  plugins: [admin(), openAPI()],
+  telemetry: {
+    enabled: false,
+  },
   user: {
     modelName: 'User',
   },
@@ -26,5 +30,9 @@ export const auth = betterAuth({
   },
   verification: {
     modelName: 'Verification',
+  },
+  advanced: {
+    // TODO: Remove this before production. Only for testing purposes (Bruno)
+    disableOriginCheck: import.meta.dev,
   },
 });
