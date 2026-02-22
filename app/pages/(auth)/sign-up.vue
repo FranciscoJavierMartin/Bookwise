@@ -95,6 +95,10 @@ import { useForm } from '@tanstack/vue-form';
 import { authClient } from '~~/lib/auth-client';
 import { ROUTES } from '@/utils/constants/routes';
 
+definePageMeta({
+  middleware: ['non-auth'],
+});
+
 const { showErrorToast } = useToast();
 
 const signUpFormSchema = v.pipe(

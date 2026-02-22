@@ -25,7 +25,7 @@
         </p>
       </div>
       <div class="rounded-2xl bg-white p-8 shadow-xl">
-        <form class="flex flex-col gap-y-4">
+        <form class="flex flex-col gap-y-4" @submit.prevent="form.handleSubmit">
           <FormInput
             name="email"
             label="Email"
@@ -69,6 +69,10 @@ import * as v from 'valibot';
 import { useForm } from '@tanstack/vue-form';
 import { authClient } from '~~/lib/auth-client';
 import { ROUTES } from '@/utils/constants/routes';
+
+definePageMeta({
+  middleware: ['non-auth'],
+});
 
 const { showErrorToast } = useToast();
 
