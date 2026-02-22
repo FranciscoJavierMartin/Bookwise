@@ -31,7 +31,7 @@
         <div class="mb-6 rounded-lg border border-red-200 bg-red-50 p-4">
           <p class="text-sm text-red-700">error</p>
         </div>
-        <form class="flex flex-col gap-y-6" @submit.prevent="form.handleSubmit">
+        <form class="flex flex-col gap-y-4" @submit.prevent="form.handleSubmit">
           <FormInput
             name="fullName"
             label="Full name"

@@ -16,6 +16,7 @@
           @blur="field.handleBlur"
           @input="field.handleChange($event.target?.value)"
         />
+        <FormInputError :errors="field.state.meta.errors" />
       </div>
     </template>
   </component>
