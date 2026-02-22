@@ -58,6 +58,7 @@
           />
           <button
             type="submit"
+            :disabled="form.state.isSubmitting"
             class="brand-gradient mt-2 w-full transform rounded-lg px-4 py-3 font-semibold text-white transition-all hover:scale-[1.02] hover:from-indigo-700 hover:to-purple-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
           >
             {{ form.state.isSubmitting ? 'Signing Up' : 'Sign Up' }}
