@@ -2,7 +2,7 @@
   <component :is="formField" :name>
     <template #default="{ field }">
       <div>
-        <label :for="field.name">
+        <label :for="field.name" class="ml-1 text-[15px]">
           {{ label }}
         </label>
         <input
