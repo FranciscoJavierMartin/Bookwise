@@ -94,6 +94,7 @@
 <script setup lang="ts">
 import * as v from 'valibot';
 import { useForm } from '@tanstack/vue-form';
+import { authClient } from '~~/lib/auth-client';
 import { ROUTES } from '@/utils/constants/routes';
 
 const signUpFormSchema = v.pipe(
@@ -136,10 +137,12 @@ const form = useForm({
     onSubmit: signUpFormSchema,
   },
   onSubmit: async ({ value }) => {
-    console.log(value);
-  },
-  onSubmitInvalid: ({ value }) => {
-    console.log('hello', value);
+    await authClient.admin.createUser({
+      email: value.email,
+      name: value.fullName,
+      password: value.password,
+      role: 'user',
+    });
   },
 });
 </script>
