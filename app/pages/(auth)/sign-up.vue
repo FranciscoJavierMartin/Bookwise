@@ -28,10 +28,7 @@
       </div>
 
       <div class="rounded-2xl bg-white p-8 shadow-xl">
-        <div class="mb-6 rounded-lg border border-red-200 bg-red-50 p-4">
-          <p class="text-sm text-red-700">error</p>
-        </div>
-        <form class="flex flex-col gap-y-6" @submit.prevent="form.handleSubmit">
+        <form class="flex flex-col gap-y-4" @submit.prevent="form.handleSubmit">
           <FormInput
             name="fullName"
             label="Full name"
@@ -61,9 +58,10 @@
           />
           <button
             type="submit"
-            class="brand-gradient w-full transform rounded-lg px-4 py-3 font-semibold text-white transition-all hover:scale-[1.02] hover:from-indigo-700 hover:to-purple-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+            :disabled="form.state.isSubmitting"
+            class="brand-gradient mt-2 w-full transform rounded-lg px-4 py-3 font-semibold text-white transition-all hover:scale-[1.02] hover:from-indigo-700 hover:to-purple-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
           >
-            Create account
+            {{ form.state.isSubmitting ? 'Signing Up' : 'Sign Up' }}
           </button>
         </form>
 
@@ -94,7 +92,14 @@
 <script setup lang="ts">
 import * as v from 'valibot';
 import { useForm } from '@tanstack/vue-form';
+import { authClient } from '~~/lib/auth-client';
 import { ROUTES } from '@/utils/constants/routes';
+
+definePageMeta({
+  middleware: ['non-auth'],
+});
+
+const { showErrorToast } = useToast();
 
 const signUpFormSchema = v.pipe(
   v.object({
@@ -136,10 +141,20 @@ const form = useForm({
     onSubmit: signUpFormSchema,
   },
   onSubmit: async ({ value }) => {
-    console.log(value);
-  },
-  onSubmitInvalid: ({ value }) => {
-    console.log('hello', value);
+    try {
+      const response = await authClient.signUp.email({
+        email: value.email,
+        name: value.fullName,
+        password: value.password,
+        callbackURL: '/',
+      });
+
+      if (response.error) {
+        throw new Error();
+      }
+    } catch {
+      showErrorToast('Error on creating account');
+    }
   },
 });
 </script>

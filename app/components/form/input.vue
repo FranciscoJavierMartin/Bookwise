@@ -2,7 +2,7 @@
   <component :is="formField" :name>
     <template #default="{ field }">
       <div>
-        <label :for="field.name">
+        <label :for="field.name" class="ml-1 text-[15px]">
           {{ label }}
         </label>
         <input
@@ -16,6 +16,7 @@
           @blur="field.handleBlur"
           @input="field.handleChange($event.target?.value)"
         />
+        <FormInputError :errors="field.state.meta.errors" />
       </div>
     </template>
   </component>
