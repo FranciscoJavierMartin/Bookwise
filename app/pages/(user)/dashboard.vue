@@ -142,7 +142,7 @@
               <div class="flex items-center justify-between">
                 <span class="text-gray-600">Member since</span>
                 <span class="font-semibold text-gray-900">
-                  {{ new Date(user!.createdAt).toLocaleDateString() }}
+                  {{ new Date(user?.createdAt ?? '').toLocaleDateString() }}
                 </span>
               </div>
             </div>
