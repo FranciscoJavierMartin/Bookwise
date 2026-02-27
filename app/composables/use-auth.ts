@@ -10,7 +10,7 @@ export function useAuth() {
 
   async function signOut() {
     await authClient.signOut();
-    router.replace({ name: ROUTES.signIn });
+    await router.replace({ name: ROUTES.signIn });
   }
 
   return {
