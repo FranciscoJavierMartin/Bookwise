@@ -7,6 +7,7 @@ export const ROUTES = {
   pricing: 'pricing',
   checkout: 'pricing-checkout',
   signIn: 'sign-in',
-  signInAdmin: 'sign-in-admin',
+  signInAdmin: 'admin-sign',
   signUp: 'sign-up',
+  adminDashboard: 'admin-dashboard',
 };
