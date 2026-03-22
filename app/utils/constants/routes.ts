@@ -10,4 +10,11 @@ export const ROUTES = {
   signInAdmin: 'admin-sign',
   signUp: 'sign-up',
   adminDashboard: 'admin-dashboard',
+  adminBooks: 'admin-books',
+  adminBooksNew: 'admin-books-new',
+  adminCategories: 'admin-categories',
+  adminReviews: 'admin-reviews',
+  adminSettings: 'admin-settings',
+  adminSubscriptions: 'admin-subscriptions',
+  adminUsers: 'admin-users',
 };
